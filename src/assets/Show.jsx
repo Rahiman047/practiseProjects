@@ -1,16 +1,15 @@
 import React from "react";
 
-const showJsx = (eachData) => {
-  console.log(eachData);
-  const { id, company, description, name } = eachData;
+const ShowJsx = (eachData) => {
+  const { userData } = eachData;
+
+  const { joke } = userData;
+
   return (
     <>
-      <h1>{company}</h1>
-      <p>{company}</p>
-      <p>{description}</p>
-      <p>{name}</p>
+      <h1>{joke}</h1>
     </>
   );
 };
 
-export default showJsx;
+export default ShowJsx;

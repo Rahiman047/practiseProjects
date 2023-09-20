@@ -2,32 +2,48 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
 import ShowJsx from "./assets/Show";
-const url = "https://icanhazdadjoke.com/";
+const url = "https://course-api.com/axios-tutorial-post";
 
 function App() {
-  const [userData, setData] = useState([]);
+  const [name, setName] = useState();
+  const [email, setEmail] = useState();
 
-  const fetchData = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-      const responseData = await axios.get(url, {
-        headers: { Accept: "application/json" },
+      const serverResponse = await axios.post(url, {
+        name: name,
+        email: email,
       });
-      const data = responseData.data;
-      setData(data);
-      // console.log(data);
+      console.log(serverResponse);
     } catch (error) {
       console.log(error.response);
     }
   };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   return (
     <>
-      {/* <h1>Hello</h1> */}
-      <ShowJsx userData={userData} />
+      {/* <h1>Hello</h1>
+      <ShowJsx userData={userData} /> */}
+      <form type="submit" className="form-el" onSubmit={handleSubmit}>
+        <div className="form-sec">
+          <label htmlFor="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
+        <div className="form-sec">
+          <label htmlFor="email">Email</label>
+          <input
+            type="text"
+            id="email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        <button className="sub-button">submit</button>
+      </form>
     </>
   );
 }

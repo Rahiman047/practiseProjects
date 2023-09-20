@@ -1,31 +1,29 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import axios from "./Axios.jsx";
 import "./App.css";
 import ShowJsx from "./assets/Show";
-const url = "https://course-api.com/axios-tutorial-post";
+const url = "https://course-api.com/react-store-products";
 
 function App() {
-  const [name, setName] = useState();
-  const [email, setEmail] = useState();
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const getData = async () => {
     try {
-      const serverResponse = await axios.post(url, {
-        name: name,
-        email: email,
-      });
-      console.log(serverResponse);
+      const getRes = await axios.get(url);
+      console.log(getRes);
     } catch (error) {
       console.log(error.response);
     }
   };
 
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
     <>
+      <h1>Axios</h1>
       {/* <h1>Hello</h1>
       <ShowJsx userData={userData} /> */}
-      <form type="submit" className="form-el" onSubmit={handleSubmit}>
+      {/* <form type="submit" className="form-el" onSubmit={handleSubmit}>
         <div className="form-sec">
           <label htmlFor="name">Name</label>
           <input
@@ -43,7 +41,7 @@ function App() {
           />
         </div>
         <button className="sub-button">submit</button>
-      </form>
+      </form> */}
     </>
   );
 }

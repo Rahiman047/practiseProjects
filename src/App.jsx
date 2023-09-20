@@ -2,12 +2,13 @@ import { useState, useEffect } from "react";
 import axios from "./Axios.jsx";
 import "./App.css";
 import ShowJsx from "./assets/Show";
+import authFetch from "./AuthFetch.jsx";
 const url = "https://course-api.com/react-store-products";
 
 function App() {
   const getData = async () => {
     try {
-      const getRes = await axios.get(url);
+      const getRes = await authFetch.get("react-store-products");
       console.log(getRes);
     } catch (error) {
       console.log(error.response);

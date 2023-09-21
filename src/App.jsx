@@ -6,10 +6,12 @@ import authFetch from "./AuthFetch.jsx";
 const url = "https://course-api.com/react-store-products";
 
 function App() {
+  const [data, setData] = useState([]);
   const getData = async () => {
     try {
       const getRes = await authFetch.get("react-store-products");
-      console.log(getRes);
+      const resData = await getRes.data;
+      setData(resData);
     } catch (error) {
       console.log(error.response);
     }
@@ -22,27 +24,16 @@ function App() {
   return (
     <>
       <h1>Axios</h1>
-      {/* <h1>Hello</h1>
-      <ShowJsx userData={userData} /> */}
-      {/* <form type="submit" className="form-el" onSubmit={handleSubmit}>
-        <div className="form-sec">
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            id="name"
-            onChange={(e) => setName(e.target.value)}
-          />
-        </div>
-        <div className="form-sec">
-          <label htmlFor="email">Email</label>
-          <input
-            type="text"
-            id="email"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <button className="sub-button">submit</button>
-      </form> */}
+      <div>
+        {data.map((eachData) => {
+          return (
+            <div key={eachData.id}>
+              <h1>{eachData.company}</h1>
+              <p>{eachData.description}</p>
+            </div>
+          );
+        })}
+      </div>
     </>
   );
 }

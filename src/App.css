@@ -1,18 +1,10 @@
-.form-el {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  max-width: 500px;
+.click-btn {
+  text-align: center;
+  width: 120px;
 }
 
-.form-sec {
+.card-el {
   display: flex;
-  flex-direction: column;
-  padding: 2px;
-  margin: 3px;
-}
-
-.sub-button {
-  margin: 3px;
-  padding: 3px;
+  flex-align: center;
+  justify-conettn: center;
 }

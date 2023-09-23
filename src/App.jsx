@@ -6,50 +6,20 @@ import "./App.css";
 const url = "https://api.github.com/users/QuincyLarson";
 
 function App() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(false);
-  const [data, setData] = useState([]);
+  const [btnClicked, setBtnClicked] = useState(false);
 
-  const fetchData = async () => {
-    setIsLoading(false);
-    try {
-      const response = await axios.get(url);
-      const resData = await response.data;
-      // console.log(resData);
-      if (response.status == 404) {
-        setError(true);
-      }
-      setError(false);
-      setData(...data, resData);
-    } catch (error) {
-      console.log(error.response);
-    }
-  };
-
-  useEffect(() => {
-    setIsLoading(true);
-    fetchData();
-  }, []);
-
-  const ShowUser = ({ name, bio, company }) => {
-    console.log(data);
-    return (
-      <div>
-        <h1>{data.name}</h1>
-        <h2>{data.bio}</h2>
-        <p>{data.company}</p>
-      </div>
-    );
+  const toggleBtnClicked = () => {
+    setBtnClicked(!btnClicked);
   };
 
   return (
-    <div>
-      {isLoading && <h1>Loading...</h1>}
-      <>
-        {(error && <h1>user Not Found</h1>) || (
-          <ShowUser data={data} key={data.id} />
-        )}
-      </>
+    <div className="card-el">
+      <div className="click-btn">
+        <button type="button" onClick={toggleBtnClicked}>
+          {btnClicked ? "UnClickMe" : "Click Me"}
+        </button>
+      </div>
+      {btnClicked ? <p>"U unclicked the Btn"</p> : <p>"U Cliked the Btn"</p>}
     </div>
   );
 }

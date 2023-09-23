@@ -6,20 +6,35 @@ import "./App.css";
 const url = "https://api.github.com/users/QuincyLarson";
 
 function App() {
-  const [btnClicked, setBtnClicked] = useState(false);
+  const [user, setUser] = useState("");
+  const [userName, setUserName] = useState(null);
 
-  const toggleBtnClicked = () => {
-    setBtnClicked(!btnClicked);
+  const submitUser = () => {
+    setUser("");
+    if (user === "") {
+      setUserName("");
+    }
+    setUserName(user);
   };
 
   return (
     <div className="card-el">
-      <div className="click-btn">
-        <button type="button" onClick={toggleBtnClicked}>
-          {btnClicked ? "UnClickMe" : "Click Me"}
-        </button>
+      <div>
+        <label htmlFor="user">Name</label>
+        <input
+          type="text"
+          id="user"
+          value={user}
+          onChange={(e) => setUser(e.target.value)}
+        />
       </div>
-      {btnClicked ? <p>"U unclicked the Btn"</p> : <p>"U Cliked the Btn"</p>}
+      <div>
+        <button type="button" onClick={submitUser}>
+          {userName ? "Logout" : "Login"}
+        </button>
+        {userName && <p>{`userName is ${userName}`}</p>}
+        {!userName && <p>Please Give user Name</p>}
+      </div>
     </div>
   );
 }

@@ -6,35 +6,21 @@ import "./App.css";
 const url = "https://api.github.com/users/QuincyLarson";
 
 function App() {
-  const [user, setUser] = useState("");
-  const [userName, setUserName] = useState(null);
+  const [toggle, isToggle] = useState(false);
 
-  const submitUser = () => {
-    setUser("");
-    if (user === "") {
-      setUserName("");
-    }
-    setUserName(user);
+  const ShowComponent = () => {
+    useEffect(() => {
+      console.log("Toggled");
+    }, []);
+    return <h1>Hello Lol</h1>;
   };
 
   return (
-    <div className="card-el">
-      <div>
-        <label htmlFor="user">Name</label>
-        <input
-          type="text"
-          id="user"
-          value={user}
-          onChange={(e) => setUser(e.target.value)}
-        />
-      </div>
-      <div>
-        <button type="button" onClick={submitUser}>
-          {userName ? "Logout" : "Login"}
-        </button>
-        {userName && <p>{`userName is ${userName}`}</p>}
-        {!userName && <p>Please Give user Name</p>}
-      </div>
+    <div>
+      <button type="button" onClick={() => isToggle(!toggle)}>
+        Toggle
+      </button>
+      {toggle && <ShowComponent />}
     </div>
   );
 }

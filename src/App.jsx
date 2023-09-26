@@ -10,9 +10,14 @@ function App() {
 
   const ShowComponent = () => {
     useEffect(() => {
-      console.log("Toggled");
+      const intervalId = setInterval(() => {
+        console.log("Hello");
+      }, 1000);
+      return () => {
+        clearInterval(intervalId);
+      };
     }, []);
-    return <h1>Hello Lol</h1>;
+    return <div>Hello There</div>;
   };
 
   return (

@@ -6,13 +6,22 @@ import "./App.css";
 function App() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [users, setUsers] = useState([]);
 
   const submitClicked = (e) => {
     e.preventDefault();
-
+    const newUser = {
+      name,
+      email,
+    };
+    setUsers((prevUsers) => [...prevUsers, newUser]);
     setName("");
     setEmail("");
   };
+
+  useEffect(() => {
+    console.log(users);
+  }, [users]);
 
   return (
     <div>

@@ -2,32 +2,30 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 import "./App.css";
-import ShowUser from "./ShowUser";
-
-const url = "https://api.github.com/users/QuincyLarson";
-
-const data = [
-  { id: 1, name: "Rahiman", nickName: "Rah" },
-  { id: 2, name: "Abdur" },
-  {
-    id: 3,
-    contact: {
-      email: "johndoe@example.com",
-      phone: "123-456-7890",
-      twitter: "https://twitter.com/johndoe",
-    },
-  },
-];
 
 function App() {
   return (
     <div>
-      <h1>Hello</h1>
-      <div>
-        {data.map((eachItem) => (
-          <ShowUser key={eachItem.id} {...eachItem} />
-        ))}
-      </div>
+      <form className="form-cont">
+        <h1 className="form-heading">Controlled Inputs</h1>
+        <div className="form-input-comp">
+          <label className="form-label" htmlFor="name">
+            Name:-
+          </label>
+          <input type="text" id="name" className="form-input" />
+        </div>
+        <div className="form-input-comp">
+          <label className="form-label" htmlFor="email">
+            Email:-
+          </label>
+          <input type="text" id="email" className="form-input" />
+        </div>
+        <div className="submit-btn-cont">
+          <button type="submit" className="submit-btn">
+            Submit
+          </button>
+        </div>
+      </form>
     </div>
   );
 }

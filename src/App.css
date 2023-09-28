@@ -1,10 +1,63 @@
-.click-btn {
-  text-align: center;
-  width: 120px;
+.form-cont {
+  width: 600px;
+  margin: auto;
+  background-color: #f0f0f0;
+  padding: 7px;
+  display: flex;
+  flex-direction: column;
+  justify-conetent: center;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
 }
 
-.card-el {
+.form-heading {
+  font-size: 30px;
+  color: #000000;
+  font-family: "Roboto";
+  font-weight: 400px;
+}
+
+.form-label {
+  font-size: 15px;
+  color: #0000ff;
+  align-self: flex-start;
+  font-weight: 300px;
+  padding: 4px;
+  cursor: pointer;
+}
+
+.form-input-comp {
   display: flex;
-  flex-align: center;
-  justify-conettn: center;
+  flex-direction: column;
+  padding: 7px;
+}
+
+.form-input {
+  padding: 3px;
+  width: 300px;
+}
+
+.form-input:focus {
+  border: 2px solid blue;
+}
+
+.submit-btn-cont {
+  padding: 5px;
+  margin-top: 10px;
+}
+
+.submit-btn {
+  font-family: "Roboto";
+  font-size: 12px;
+  font-weight: bold;
+  width: 100px;
+  padding: 3px;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: #00b359;
+  color: #f0f0f0;
 }

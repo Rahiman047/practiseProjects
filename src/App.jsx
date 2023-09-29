@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import { v4 as uuidv4 } from "uuid";
+import DisplayUsers from "./DisplayUsers";
 
 import "./App.css";
 
@@ -10,18 +11,24 @@ function App() {
 
   const submitClicked = (e) => {
     e.preventDefault();
+    const newId = uuidv4();
     const newUser = {
       name,
       email,
+      id: newId,
     };
     setUsers((prevUsers) => [...prevUsers, newUser]);
     setName("");
     setEmail("");
   };
 
-  useEffect(() => {
-    console.log(users);
-  }, [users]);
+  const delUser = (id) => {
+    const deletedUsersList = users.filter((eachUser) => {
+      return eachUser.id !== id;
+    });
+    console.log(deletedUsersList);
+    setUsers(deletedUsersList);
+  };
 
   return (
     <div>
@@ -57,6 +64,11 @@ function App() {
           </button>
         </div>
       </form>
+      {users.map((eachUser) => {
+        return (
+          <DisplayUsers {...eachUser} key={eachUser.id} delUser={delUser} />
+        );
+      })}
     </div>
   );
 }
